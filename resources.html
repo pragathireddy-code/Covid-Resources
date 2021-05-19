@@ -1,0 +1,332 @@
+<html lang="en" class="isPWA"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <title>Covid Resources</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./styles/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./fonts/css/fontawesome-all.min.css">
+    <link rel="manifest" href="./_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+    <link rel="apple-touch-icon" sizes="180x180" href="./app/icons/icon-192x192.png">
+    <link class="gallery-s" rel="stylesheet" type="text/css" href="./plugins/glightbox/glightbox.css">
+
+
+ 
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-storage.js"></script>
+
+
+
+</head>
+    <body class="theme-light">
+    <div id="preloader" class="preloader-hide"><div class="spinner-border color-highlight" role="status"></div></div>
+    <div id="page" data-swup="0">
+    <div class="header header-fixed header-dark header-logo-app">
+    <a style="display: list-item; list-style: none;" href="index.html" class="header-title header-subtitle">Covid Resources</a>
+    <a style="display: list-item; list-style: none;" href="#" data-back-button="" class="header-icon header-icon-1"><i class="fa fa-arrow-left"></i></a>
+    <a style="display: list-item; list-style: none;" href="#" data-menu="menu-main" class="header-icon header-icon-2"><i class="fa fa-bars"></i></a>
+    <a style="display: list-item; list-style: none;" href="#" data-toggle-theme="" class="header-icon header-icon-3"><i class="far fa-lightbulb"></i></a>
+    </div>
+    <div id="menu-main" class="menu menu-box-left" data-menu-load="./menu-main.html" data-menu-width="280" data-menu-active="nav-pages" data-menu-effect="menu-parallax" style="display: block; width: 280px;"><div class="divider mb-0"></div>
+    <div class="d-flex">
+    <div class="mx-auto"><a href="#" class="icon icon-l"><i class="font-12 fab fa-facebook-f color-facebook"></i></a></div>
+    <div class="mx-auto"><a href="#" class="icon icon-l"><i class="font-12 fab fa-twitter color-twitter"></i></a></div>
+    <div class="mx-auto"><a href="#" class="icon icon-l"><i class="font-12 fab fa-instagram color-instagram"></i></a></div>
+    <div class="mx-auto"><a href="#" class="icon icon-l"><i class="font-12 fa fa-phone color-phone"></i></a></div>
+    <div class="mx-auto"><a href="#" class="icon icon-l close-menu"><i class="font-13 fa fa-times color-red-dark"></i></a></div>
+    </div>
+    <div class="divider"></div>
+    <a href="#" class="d-block px-3 mx-1">
+    <h1 class="pt-1 text-uppercase font-29 font-900">Covid Resources</h1>
+    <p class="mt-n3 font-10 opacity-50">A small help for people.</p>
+    </a>
+    <p class="menu-divider">Navigation <i class="fa fa-bars"></i></p>
+    <div class="list-group list-custom-small menu-list">
+    <a href="index.html" id="nav-welcome">
+    <i class="fa fa-star color-yellow-dark"></i>
+    <span>Welcome</span>
+    <i class="fa fa-circle"></i>
+    </a>
+    <a href="./index-homepages.html" id="nav-homepages">
+    <i class="fa fa-home color-brown-dark"></i>
+    <span>Homepages</span>
+    <i class="fa fa-circle"></i>
+    </a>
+    <a href="./index-components.html" id="nav-components">
+    <i class="fa fa-cog color-blue-dark"></i>
+    <span>Components</span>
+    <i class="fa fa-circle"></i>
+    </a>
+    <a href="./index-navigations.html" id="nav-navigations">
+    <i class="fa fa-bars color-teal-dark"></i>
+    <span>Navigations</span>
+    <i class="fa fa-circle"></i>
+    </a>
+    <a href="./index-pages.html" id="nav-pages">
+    <i class="fa fa-heart color-red-dark"></i>
+    <span>Pages</span>
+    <i class="fa fa-circle"></i>
+    </a>
+    <a href="./index-media.html" id="nav-media">
+    <i class="fa fa-image color-green-dark"></i>
+    <span>Media</span>
+    <i class="fa fa-circle"></i>
+    </a>
+    <a href="./index-templates.html" id="nav-templates">
+    <i class="fa fa-shopping-bag color-brown-dark"></i>
+    <span>Templates</span>
+    <i class="fa fa-circle"></i>
+    </a>
+    <a href="./index-contact.html" id="nav-contact" class="border-0">
+    <i class="fa fa-envelope color-blue-dark"></i>
+    <span>Contact</span>
+    <i class="fa fa-circle"></i>
+    </a>
+    </div>
+    <p class="menu-divider">Get Social <i class="fa fa-share-alt"></i></p>
+    <div class="list-group list-custom-small menu-list">
+    <a href="tel:+1 234 567 890" class="default-link">
+    <i class="fa fa-phone-square color-green-dark"></i>
+    <span>Call Us</span>
+    <i class="fa fa-circle"></i>
+    </a>
+    <a href="#">
+    <i class="fab fa-facebook-square color-facebook"></i>
+    <span>Facebook</span>
+    <i class="fa fa-circle"></i>
+    </a>
+    <a href="#">
+    <i class="fab fa-twitter-square color-twitter"></i>
+    <span>Twitter</span>
+    <i class="fa fa-circle"></i>
+    </a>
+    <a href="#">
+    <i class="fab fa-instagram-square color-instagram"></i>
+    <span>Instagram</span>
+    <i class="fa fa-circle"></i>
+    </a>
+    </div>
+    <p class="menu-divider">Copyright Enabled <span class="copyright-year">2021</span></p>
+    <div class="list-group list-custom-small menu-list">
+    <a href="#" class="close-menu">
+    <i class="fa fa-times color-red-dark"></i>
+    <span>Close</span>
+    <i class="fa fa-circle"></i>
+    </a>
+    </div>
+    </div>
+    <div id="footer-bar" class="footer-bar-1">
+        <a href="./index.html"><i class="fa fa-home"></i><span>Welcome</span></a>a>
+        <a href="./resources.html" class="active-nav"><i class="fa fa-layer-group "></i><span>Resources</span></a>
+        <a href="./upload.html"><i class="fa fa-file"></i><span>Upload</span></a>
+    </div>
+    <div id="myresources" class="page-content header-clear-medium has-footer">
+    <div data-menu-load="./menu-footer.html"><div class="footer">
+    </div>
+    </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="./scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" class="gallery-c" src="./plugins/glightbox/glightbox-call.js"></script><script type="text/javascript" class="gallery-p" src="./plugins/glightbox/glightbox.js"></script><script type="text/javascript" src="./scripts/custom.js"></script>
+
+    <script id="MainScript">
+
+        var firebaseConfig = {
+                    apiKey: "AIzaSyD-0HBIy-bxWUeAEKIuhVO0dx2fWIUDnKQ",
+                    authDomain: "covid-resources-91092.firebaseapp.com",
+                    projectId: "covid-resources-91092",
+                    storageBucket: "covid-resources-91092.appspot.com",
+                    messagingSenderId: "688931996497",
+                    appId: "1:688931996497:web:8f2d31aa198528192d8970",
+                    measurementId: "G-FCRF1NGT7E"
+                };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+                firebase.analytics();   
+                
+                
+                var mykey = "hi";
+                
+                
+            
+                function SelectAllData(){
+                    firebase.database().ref('resources').once('value',
+                    function(AllRecords){
+                        // console.log(AllRecords.length)
+                        AllRecords.forEach(
+                            function(CurrentRecord){
+                                var mydata = CurrentRecord.val().mydata;
+                                var myarea = CurrentRecord.val().myarea;
+                                var mytime = CurrentRecord.val().mytime;
+                                var myverify = CurrentRecord.val().myverify;
+                                var mycover = CurrentRecord.val().mycover;
+                                mykey = CurrentRecord.key;
+                                // console.log(mykey1);
+                                // console.log(head, name, pdata, gender, age, people, benefited, place, replies);
+                                AddDataToView(mydata, myarea, mytime, myverify, mycover, mykey);
+                                
+                            }
+                        )
+                    })
+                }
+            
+               
+            
+                window.onload = SelectAllData;
+
+                
+
+               
+                
+            
+                function AddDataToView(mydata, myarea, mytime, myverify, mycover, mykey){
+
+                    
+
+                    // var divtag = document.createElement('div');
+                    //     divtag.setAttribute('id', mykey)
+                    //     divtag.setAttribute('class', 'menu menu-box-right')
+                    //     divtag.setAttribute('data-menu-width', 'cover')
+                    //     divtag.setAttribute('data-menu-effect', 'menu-parallax')
+                    //     divtag.style.display= 'block'
+                    //     divtag.style.width= '100%'
+
+
+
+                    // var sidedivdata = 
+                    //     '<div class="card mb-3" data-card-height="350" style="height: 350px; background-image: url('+mycover+')">'+
+                    //     '<div class="card-top no-click">'+'<span class="badge bg-blue-dark px-3 py-3 m-3 text-uppercase rounded-s float-end">'+"QR CODE"+'</span>'+'</div>'+
+                    //     '<div class="card-top">'+'<a onclick="myback();" id="myback" href="#" class="close-menu badge bg-black color-white px-3 py-3 m-3 text-uppercase rounded-s">'+'<i class="fa fa-arrow-left pe-3">'+'</i>'+" Back to List"+'</a>'+'</div>'+
+                    //     '</div>'+
+                    //     '<div class="row mb-0">'+
+                    //     '<div class="col-6">'+'<p class="opacity-50 mb-2">'+'<i class="fa fa-user px-3">'+'</i>'+myverify+'</p>'+'</div>'+
+                    //     '<div class="col-6">'+'<p class="opacity-50 mb-2 text-end">'+mytime+'<i class="fa fa-clock px-3">'+'</i>'+'</p>'+'</div>'+
+                    //     '</div>'+
+                    //     '<div class="divider opacity-70">'+'</div>'+
+                    //     '<div class="content">'+
+                    //     '<h1>'+mydata+'</h1>'+
+                    //     '<p>'+myarea+'</p>'+
+                    //     '<a href="https://www.facebook.com/sharer/sharer.php?u=https://www.enableds.com/products/appeca/v50/page-article-cards.html" class="shareToFacebook mb-3 icon icon-s bg-facebook rounded-xs text-uppercase font-900">'+'<i class="fab fa-facebook-f font-14">'+'</i>'+'</a>'+
+                    //     '<a href="https://twitter.com/share?text=https://www.enableds.com/products/appeca/v50/page-article-cards.html" class="shareToTwitter mb-3 icon icon-s bg-twitter rounded-xs text-uppercase font-900">'+'<i class="fab fa-twitter font-14">'+'</i>'+'</a>'+
+                    //     '<a href="https://pinterest.com/pin/create/button/?url=https://www.enableds.com/products/appeca/v50/page-article-cards.html" class="shareToPinterest mb-3 icon icon-s bg-pinterest rounded-xs text-uppercase font-900">'+'<i class="fab fa-pinterest font-14">'+'</i>'+'</a>'+
+                    //     '<a href="#" class="shareToLinkedin mb-3 icon icon-s bg-linkedin rounded-xs text-uppercase font-900">'+'<i class="fab fa-linkedin-in font-14">'+'</i>'+'</a>'+
+                    //     '<a onclick="window.open('+'whatsapp://send?text=This is WhatsApp sharing example using button'+')" class="shareToWhatsApp mb-3 icon icon-s bg-whatsapp rounded-xs text-uppercase font-900">'+'<i class="fab fa-whatsapp font-14">'+'</i>'+'</a>'+
+                    //     '<a href="mailto:?body=https://www.enableds.com/products/appeca/v50/page-article-cards.html" class="shareToMail mb-3 icon icon-s bg-blue-dark rounded-xs text-uppercase font-900">'+'<i class="fa fa-envelope font-14">'+'</i>'+'</a>'+
+                    //     '<div class="divider mt-3">'+'</div>'+
+
+                    //     '<p style="font-size: 15px; line-height: 1.5">'+mydata+'</p>'+
+
+                    //     '<div style="width: -webkit-full-available; text-align: center;"><img width="130" class="qr-image generate-qr-auto polaroid-effect shadow-l rounded-0" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&amp;data=https://www.enableds.com/products/appeca/v50/component-qr-generator.html"><p style="margin-top: 10px;">Scan this code to view this page again.</p></div>'+
+                        
+                    //     '<div class="divider">'+'</div>'+
+                    //     '<a onclick="myback();" href="#" class="close-menu btn btn-m rounded-sm text-uppercase font-700 shadow-xxl btn-full bg-highlight mb-4">'+"CLOSE"+'</a>'+
+                    //     '</div>';
+
+                
+
+                    //     divtag.innerHTML = sidedivdata;
+
+                    // document.getElementById('page').appendChild(divtag);
+
+                 var formtag = document.createElement('form')
+                 formtag.setAttribute('method', 'GET')
+                 formtag.setAttribute('action', './info.html')
+                 
+
+                   
+
+                    
+                            // var atag = document.createElement('a');
+                            // atag.setAttribute('type', 'submit')
+                            // atag.setAttribute('value', 'submit')
+                            // atag.setAttribute('href', '#')
+                            // atag.setAttribute('data-menu', mykey)
+                            // atag.setAttribute('class', 'card mx-3 rounded-s bg-30')
+                            // atag.setAttribute('data-card-height', 250)
+                            // atag.style.height = '250px'
+                            // atag.style.backgroundImage = 'url('+mycover+')'
+
+                            
+                            // var xxxxx = "openinfo("+mykey+");"
+                            // console.log(`openinfo(${mykey})`)
+                            
+                            // atag.setAttribute('onclick', `function(){console.log(${mykey})}` )
+                            // atag.setAttribute('onclick', `openinfo(${mykey});`)
+                            // atag.setAttribute('onclick', `${mykey}();`)
+                        
+                    
+                    var datacard = 
+                            '<a href="./info.html?infoid='+mykey+'" type="submit" value="submit" class="card mx-3 rounded-s bg-30" style="height:250; background-image: url('+mycover+');"><div class="card-top">'+
+                            '<span name="name" type="text" class="badge bg-orange-dark px-3 py-2 m-3 text-uppercase rounded-s">'+myarea+'</span>'+
+                            '</div>'+
+                            '<div class="card-bottom mb-4 pb-1 mx-3">'+
+                            '<h1 name="surname" type="text" class="color-white font-20 font-700">'+mydata+'</h1>'+
+                            '</div>'+
+                            '<div class="card-bottom">'+
+                            '<p class="color-white opacity-50 mb-2">'+'<i class="fa fa-user px-3">'+'</i>'+myverify+'</p>'+
+                            '</div>'+
+                            '<div class="card-bottom">'+
+                            '<p class="color-white opacity-50 mb-2 text-end">'+mytime+'<i class="fa fa-clock px-3">'+'</i>'+'</p>'+
+                            '</div>'+
+                            '<div class="card-overlay bg-gradient-overlay rounded-s">'+'</div></a>';
+
+                            formtag.innerHTML = datacard;
+
+                            // var tempdiv = document.createElement('div');
+                            // tempdiv.innerHTML = datacard;
+                            
+                    
+                    
+                    document.getElementById('myresources').prepend(formtag);
+
+
+                    
+
+                        console.log(mykey)
+                        console.log(document.getElementById(mykey))
+
+                        
+                    
+                }
+
+                function openinfo(mykey){
+                    // document.getElementById(mykey).classList.add('menu-active')
+                    // document.querySelector('.menu-hider').classList.add('menu-active')
+                    console.log(mykey)
+                }
+               
+                function myback(){
+                    // document.getElementById(mykey+'myback').classList.remove('menu-active');
+                    document.getElementById(mykey).classList.remove('menu-active')
+                    document.querySelector('.menu-hider').classList.remove('menu-active')
+                }
+
+                
+
+
+                
+            
+            
+            </script>
+
+
+<script type="module">
+    import 'https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js';
+  
+    
+var lightbox = GLightbox({
+    closeOnOutsideClick: false,
+    zoomable:false,
+    descPosition:'bottom',
+    selector: '[data-gallery]',
+    openEffect: 'fade',
+    closeEffect: 'fade',
+    dragAutoSnap:true,
+});
+
+  </script>
+    <div class="menu-hider" style="transform: translateX(0px);"></div><p class="offline-message bg-red-dark color-white">No internet connection detected</p><p class="online-message bg-green-dark color-white">You are back online</p></body></html>

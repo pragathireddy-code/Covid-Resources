@@ -1,0 +1,255 @@
+<html lang="en" class="isPWA"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <title>Appeca Mobile</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./styles/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./fonts/css/fontawesome-all.min.css">
+    <link rel="manifest" href="./_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+    <link rel="apple-touch-icon" sizes="180x180" href="./app/icons/icon-192x192.png">
+    <link class="gallery-s" rel="stylesheet" type="text/css" href="./plugins/glightbox/glightbox.css">
+
+    
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
+
+
+</head>
+    <body class="theme-dark">
+    <div id="preloader" class="preloader-hide"><div class="spinner-border color-highlight" role="status"></div></div>
+    <div id="page" data-swup="0">
+    <div class="header header-fixed header-dark header-logo-app">
+    <a style="display: list-item; list-style: none;" href="index.html" class="header-title header-subtitle">Upload Correct Information</a>
+    <a style="display: list-item; list-style: none;" href="#" data-back-button="" class="header-icon header-icon-1"><i class="fa fa-arrow-left"></i></a>
+    <a style="display: list-item; list-style: none;" href="#" data-menu="menu-main" class="header-icon header-icon-2"><i class="fa fa-bars"></i></a>
+    <a style="display: list-item; list-style: none;" href="#" data-toggle-theme="" class="header-icon header-icon-3"><i class="far fa-lightbulb"></i></a>
+    </div>
+    <div id="menu-main" class="menu menu-box-left" data-menu-load="./menu-main.html" data-menu-width="280" data-menu-active="nav-pages" data-menu-effect="menu-parallax" style="display: block; width: 280px;"></div>
+    </div>
+    <div id="footer-bar" class="footer-bar-1">
+    
+    <a href="index.html"><i class="fa fa-home"></i><span>Welcome</span></a>
+    <a href="./resources.html"><i class="fa fa-layer-group "></i><span>Resources</span></a>
+    <a href="upload.html" class="active-nav"><i class="fa fa-file"></i><span>Upload</span></a>
+    
+    </div>
+    <div class="page-content header-clear has-footer">
+    <div class="mb-4">
+    <div class="divider mb-4"></div>
+
+    <div class="content">
+    <h4>Fill the information.</h4>
+    <p>only verified details are encouraged.</p>
+
+    <form action="php/contact.php" method="post" class="contactForm" id="contactForm">
+
+    
+    <div class="input-style has-borders no-icon validate-field mb-4">
+    <input type="text" class="form-control validate-text" id="mylocation" placeholder="Location">
+    <label for="mylocation" class="color-highlight">Location</label>
+    <i class="fa fa-times disabled invalid color-red-dark"></i>
+    <i class="fa fa-check disabled valid color-green-dark"></i>
+    <em>(required)</em>
+    </div>
+
+    <div class="form-field form-text">
+        <label class="contactMessageTextarea color-theme" for="contactMessageTextarea">Details:<span>(required)</span></label>
+        <textarea name="contactMessageTextarea" class="contactTextarea rounded-0 requiredField" id="mydata"></textarea>
+        </div>
+
+
+
+    <div class="input-style has-borders no-icon validate-field mb-4">
+    <input type="text" class="form-control validate-text" id="myverify" placeholder="Verified ? yes or no">
+    <label for="myverify" class="color-highlight">Verify</label>
+    <i class="fa fa-times disabled invalid color-red-dark"></i>
+    <i class="fa fa-check disabled valid color-green-dark"></i>
+    <em>(required)</em>
+    </div>
+
+    <div class="file-data pb-5">
+        <input id="file-upload" class="upload-file bg-highlight shadow-s ">
+        <p class="upload-file-text color-white">Upload Image</p>
+        </div>
+
+        <div class="list-group list-custom-large upload-file-data disabled">
+            <img id="image-data" src="./images/empty.png" class="img-fluid" style="width:auto; height:auto;">
+            <a href="#" class="border-0">
+            <i class="fa font-14 fa-info-circle color-blue-dark"></i>
+            <span>File Name</span>
+            <strong class="upload-file-name"></strong>
+            </a>
+            </div>
+
+    </form>
+    
+   
+    <div class="divider mt-3"></div>
+    <a href="#" data-toast="toast-processing" type="btn" id="uploadmydata" class="btn btn-full bg-highlight btn-m mt-4 text-uppercase font-700">Upload</a>
+    </div>
+    </div>
+    <div data-menu-load="menu-footer.html"><div class="footer">
+    </div>
+    </div>
+    </div>
+
+    <div id="toast-processing" class="toast toast-tiny toast-top bg-green-dark fade hide" data-bs-delay="3000" data-bs-autohide="true"><i class="fa fa-check me-3"></i>Upload done.</div>
+    <div id="imageupload-toast" class="toast toast-tiny toast-top bg-blue-dark fade hide" data-bs-delay="3000" data-bs-autohide="true"><i class="fa fa-check me-3"></i>Image Selected</div>
+
+    </div>
+    <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" class="gallery-p" src="plugins/glightbox/glightbox.js"></script><script type="text/javascript" src="scripts/custom.js"></script>
+    
+    <div class="menu-hider" style="transform: translateX(0px);"></div><p class="offline-message bg-red-dark color-white">No internet connection detected</p><p class="online-message bg-green-dark color-white">You are back online</p>
+
+   
+    <script id="MainScript">
+
+
+
+var firebaseConfig = {
+            apiKey: "AIzaSyD-0HBIy-bxWUeAEKIuhVO0dx2fWIUDnKQ",
+            authDomain: "covid-resources-91092.firebaseapp.com",
+            projectId: "covid-resources-91092",
+            storageBucket: "covid-resources-91092.appspot.com",
+            messagingSenderId: "688931996497",
+            appId: "1:688931996497:web:8f2d31aa198528192d8970",
+            measurementId: "G-FCRF1NGT7E"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+var datestr = new Date().toDateString();
+var array = datestr.split(" ");
+if(array[2]==1 || array[2]==01 || array[2]==21 || array[2]==31)
+array[2]+="st";
+else if(array[2]==2 || array[2]==02 || array[2]==22)
+array[2]+="nd";
+else if(array[2]==3 || array[2]==03 || array[2]==23)
+array[2]+="rd";
+else
+console.log(array[2]+="th"+" "+array[1]+" "+array[3])
+
+console.log(array[2])
+console.log(array[1])
+console.log(array[3])
+console.log(array[2]+" "+array[1]+" "+array[3])
+
+let database1 = firebase.database()
+let ref = database1.ref('resources')
+
+var datakey = ref.push().key;
+
+var ImgName, ImgUrl;
+            var files = [];
+            var reader;
+
+document.getElementById("file-upload").onclick = function(e) {
+  var input = document.createElement('input');
+  input.type = 'file';
+  input.click();
+
+  input.onchange = e => {
+    files = e.target.files;
+    reader = new FileReader();
+    reader.onload = function(){
+      document.getElementById("image-data").src = reader.result;
+      var toastid = document.getElementById('imageupload-toast')
+      toastid = new bootstrap.Toast(toastid);
+      toastid.show();
+    }
+    reader.readAsDataURL(files[0]);
+  }
+
+  
+}
+        
+    
+    document.getElementById('uploadmydata').addEventListener('click', function( event ) {
+    
+        console.log("upload begin...")
+
+        var myverifyf = "none";
+
+        if(document.getElementById('myverify').value==='yes'){
+            myverifyf = "verified";
+        }else{
+            myverifyf = "not verified";
+        }
+
+        var srcc = document.getElementById('image-data').src
+console.log(srcc);
+
+        if(srcc==="blob:http://127.0.0.1:5500/images/empty.png" || srcc==="http://127.0.0.1:5500/images/empty.png"){
+            srcc = "https://firebasestorage.googleapis.com/v0/b/covid-resources-91092.appspot.com/o/no-image.png?alt=media"
+        }else{
+
+            var timestamp = new Date().getTime();
+            ImgName = timestamp;
+            console.log(ImgName);
+            var metadata = {
+                contentType: 'image/jpeg',
+            };
+            var uploadTask = firebase.storage().ref('info/'+ImgName+".jpg").put(files[0], metadata);
+
+            uploadTask.on('state_changed', function(snapshot){ 
+                console.log("image upload processing...")
+            },
+            
+            function(error){
+                alert('error in saving the image');
+            },
+            
+            function(){
+                uploadTask.snapshot.ref.getDownloadURL().then(function(url){
+                ImgUrl = url;
+                srcc = url;
+
+                var mmydata = document.getElementById('mydata').value
+                var mmyarea = document.getElementById('mylocation').value
+
+                // uploadFinal(array[2], mmydata, mmyarea, myverifyf, srcc, datakey);
+                console.log(array[2]+"____"+ mmydata+"____"+ mmyarea+"____"+ myverifyf+"____"+ srcc+"____"+ datakey)
+                
+                }
+                
+            );
+          return srcc;  });
+  
+        }   
+    
+    let myfinaldata = {
+          mytime : array[2],
+          mydata : document.getElementById('mydata').value,
+          myarea : document.getElementById('mylocation').value,
+          myverify : myverifyf,
+          mycover: srcc,
+          pid: datakey
+      }
+
+      ref.push(myfinaldata);
+
+      document.getElementById('mydata').value = "";
+      document.getElementById('mylocation').value = "";
+      document.getElementById('myverify').value = "";
+
+      console.log("uploade done.")
+
+      var toastid = document.getElementById('toast-processing')
+      toastid = new bootstrap.Toast(toastid);
+      toastid.show();
+
+    
+    });
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<html lang="en" class="isPWA"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+    <title>Appeca Mobile</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./styles/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./fonts/css/fontawesome-all.min.css">
+    <link rel="manifest" href="./_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+    <link rel="apple-touch-icon" sizes="180x180" href="./app/icons/icon-192x192.png">
+    <link class="gallery-s" rel="stylesheet" type="text/css" href="./plugins/glightbox/glightbox.css">
+
+    
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
+
+    <script>
+
+        var infoid ="";
+        var mycover="";
+        var myverify="";
+        var myarea="";
+        window.addEventListener('load', () => {
+
+const params = (new URL(document.location)).searchParams;
+infoid = params.get('infoid');
+// surname = params.get('surname');
+
+// document.getElementById('result-name').innerHTML = name;
+// document.getElementById('result-surname').innerHTML = surname;
+
+var firebaseConfig = {
+                    apiKey: "AIzaSyD-0HBIy-bxWUeAEKIuhVO0dx2fWIUDnKQ",
+                    authDomain: "covid-resources-91092.firebaseapp.com",
+                    projectId: "covid-resources-91092",
+                    storageBucket: "covid-resources-91092.appspot.com",
+                    messagingSenderId: "688931996497",
+                    appId: "1:688931996497:web:8f2d31aa198528192d8970",
+                    measurementId: "G-FCRF1NGT7E"
+                };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+                // firebase.firestore().enablePersistence();
+                // firebase.database().enablePersistence();
+                firebase.analytics();      
+
+                console.log(infoid)
+
+                
+
+                const dbRef = firebase.database().ref();
+                    dbRef.child("resources").child(infoid).get().then((snapshot) => {
+                    if (snapshot.exists()) {
+                                var mydata = snapshot.val().mydata;
+                                myarea = snapshot.val().myarea;
+                                var mytime = snapshot.val().mytime;
+                                myverify = snapshot.val().myverify;
+                                mycover = snapshot.val().mycover;
+                                // var mykey = snapshot.val().pid;
+                                console.log(mydata+"-"+myarea+"-"+mytime+"-"+myverify+"-"+mycover+"-")
+
+                                          
+                        document.getElementById('mydata').innerHTML = mydata
+                        document.getElementById('myarea').innerHTML = myarea
+                        document.getElementById('myfulldata').innerHTML = mydata
+                        document.getElementById('mycontent').setAttribute('id', infoid);
+                        document.getElementById('myverify').innerHTML = '<i class="fa fa-user px-3"></i> '+myverify
+                        document.getElementById('mytime').innerHTML = mytime+' <i class="fa fa-clock px-3"></i>'
+
+                        document.getElementById('mycover').style.backgroundImage = 'url('+mycover+')'
+
+
+                    } else {
+                        console.log("No data available");
+                    }
+                    }).catch((error) => {
+                    console.error(error);
+                    });
+                                    
+
+})
+
+                function myback(){
+                    history.back()
+                }
+
+                function scrolltobottom(){
+                    // document.getElementById('mycontent').scrollTop = document.getElementById('mycontent').scrollHeight;
+                    // scrollingElement.scrollTop = scrollingElement.scrollHeight;
+                    // document.querySelector('.qr-code').scrollIntoView();
+                    console.log("scrolled down")
+                }
+
+                function showimg(){
+                    document.getElementById('showimgid').style.display = 'flex'
+                    document.getElementById('fullimg').src = mycover
+                    document.querySelector('.gslide-title').innerHTML = myarea
+                }
+
+                function closeimg(){
+                    document.getElementById('showimgid').style.display = 'none'
+                }
+
+
+
+    </script>
+
+  </head>
+    <body class="theme-dark">
+
+        <div id="mycontent" class="menu menu-box-right" data-menu-width="cover" data-menu-effect="menu-parallax" style="display: contents; width: 100%;">
+            <div id="mycover" onclick="showimg();" class="card bg-22 mb-3" data-card-height="350" style="height: 350px;">
+            <div class="card-top"><span type="btn" onclick="scrolltobottom();" class="badge bg-blue-dark px-3 py-3 m-3 text-uppercase rounded-s float-end">QR CODE</span></div>
+            <div class="card-top"><a onclick="myback();" href="#" class="close-menu badge bg-black color-white px-3 py-3 m-3 text-uppercase rounded-s"><i class="fa fa-arrow-left pe-3"></i> Back to List</a></div>
+            </div>
+            <div class="row mb-0">
+            <div class="col-6"><p id="myverify" class="opacity-50 mb-2"></p></div>
+            <div class="col-6"><p id="mytime" class="opacity-50 mb-2 text-end"></p></div>
+            </div>
+            <div class="divider opacity-70"></div>
+            <div class="content">
+            <h1 id="mydata"></h1>
+            <p id="myarea"></p>
+            
+            <a href="https://www.facebook.com/sharer/sharer.php?u=url" class="shareToFacebook mb-3 icon icon-s bg-facebook rounded-xs text-uppercase font-900"><i class="fab fa-facebook-f font-14"></i></a>
+                    <a href="https://twitter.com/share?text=url" class="shareToTwitter mb-3 icon icon-s bg-twitter rounded-xs text-uppercase font-900"><i class="fab fa-twitter font-14"></i></a>
+                    <a href="https://pinterest.com/pin/create/button/?url=url" class="shareToPinterest mb-3 icon icon-s bg-pinterest rounded-xs text-uppercase font-900"><i class="fab fa-pinterest font-14"></i></a>
+                    <a href="#" class="shareToLinkedin mb-3 icon icon-s bg-linkedin rounded-xs text-uppercase font-900"><i class="fab fa-linkedin-in font-14"></i></a>
+                    <a onclick="window.open('whatsapp://send?text=This is WhatsApp sharing example using button')" class="shareToWhatsApp mb-3 icon icon-s bg-whatsapp rounded-xs text-uppercase font-900"><i class="fab fa-whatsapp font-14"></i></a>
+                    <a href="mailto:?body=url" class="shareToMail mb-3 icon icon-s bg-blue-dark rounded-xs text-uppercase font-900"><i class="fa fa-envelope font-14"></i></a>
+                    <div class="divider mt-3"></div> </div>
+
+                    <p id="myfulldata" style="font-size: 15px; line-height: 1.5; padding: 0 5% 0 5%;"></p>
+
+                    <div style="width: -webkit-full-available; text-align: center;">
+                        <img width="130" class="qr-image generate-qr-auto polaroid-effect shadow-l rounded-0" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&amp;data=https://www.enableds.com/products/appeca/v50/component-qr-generator.html"><p style="margin-top: 10px;">Scan this code to view this page.</p>
+                    </div>
+                        
+                    <div class="divider"></div>
+                    <a onclick="myback();" href="#" class="close-menu btn btn-m rounded-sm text-uppercase font-700 shadow-xxl btn-full bg-highlight mb-4">CLOSE</a>
+                    </div>
+
+        <script type="text/javascript" src="./scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" class="gallery-c" src="./plugins/glightbox/glightbox-call.js"></script><script type="text/javascript" class="gallery-p" src="./plugins/glightbox/glightbox.js"></script><script type="text/javascript" src="./scripts/custom.js"></script>
+
+    <div id="showimgid" style="width: 100%; height: 100%; display: none; position: fixed !important; top: 0; flex-flow: column; background-color: black;">
+        
+        <button onclick="closeimg();" style="align-self: flex-end; margin: 20;" class="gclose gbtn" tabindex="2" aria-label="Close"><svg style="fill: white;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xml:space="preserve"><g><g><path d="M505.943,6.058c-8.077-8.077-21.172-8.077-29.249,0L6.058,476.693c-8.077,8.077-8.077,21.172,0,29.249C10.096,509.982,15.39,512,20.683,512c5.293,0,10.586-2.019,14.625-6.059L505.943,35.306C514.019,27.23,514.019,14.135,505.943,6.058z"></path></g></g><g><g><path d="M505.942,476.694L35.306,6.059c-8.076-8.077-21.172-8.077-29.248,0c-8.077,8.076-8.077,21.171,0,29.248l470.636,470.636c4.038,4.039,9.332,6.058,14.625,6.058c5.293,0,10.587-2.019,14.624-6.057C514.018,497.866,514.018,484.771,505.942,476.694z"></path></g></g></svg></button>
+
+            <div class="gslide-media gslide-image"><img id="fullimg" style="margin-top: 50%;" src="./no-image.png" alt="" aria-labelledby="gSlideTitle_undefined" style>
+            </div>
+            <div class="gslide-description description-bottom" style="max-width: 700px; padding-top: 5px; text-align: center;">
+                <div class="gdesc-inner">
+                    <h4 style="padding-top: 5px;" class="gslide-title" id="gSlideTitle_undefined"></h4>
+                    
+                </div>
+            </div>
+        
+    
+    </div>
+    
+    </body>
+    </html>
+
+
+
+    
