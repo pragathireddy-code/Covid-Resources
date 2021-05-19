@@ -1,9 +1,10 @@
 <html lang="en" class="isPWA"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta type="content" content="Covid Resources , Join Our Community. A small help for people by providing multiple resources">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
-    <title>Appeca Mobile</title>
+    <title>Covid Resources</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./styles/bootstrap.css">
@@ -72,6 +73,11 @@ var firebaseConfig = {
 
                         document.getElementById('mycover').style.backgroundImage = 'url('+mycover+')'
 
+                        document.querySelector('.qr-image').src = `https://api.qrserver.com/v1/create-qr-code/?data=https://covid-resources-team.netlify.app/info.html?infoid=${infoid}&amp;size=200x200%22%20alt=%22${myarea}%22%20title=%22${mydata}%22`;
+                        document.getElementById('fbshareid').setAttribute('href', `https://www.facebook.com/sharer/sharer.php?u=https://covid-resources-team.netlify.app/info.html?infoid=${infoid}`)
+document.getElementById('twittershareid').setAttribute('href', `href=https://twitter.com/share?text=https://covid-resources-team.netlify.app/info.html?infoid=${infoid}`)
+document.getElementById('pinterestshareid').setAttribute('href', `href=https://pinterest.com/pin/create/button/?url=https://covid-resources-team.netlify.app/info.html?infoid=${infoid}`)
+document.getElementById('mailshareid').setAttribute('href', `href=mailto:?body=https://covid-resources-team.netlify.app/info.html?infoid=${infoid}`)
 
                     } else {
                         console.log("No data available");
@@ -125,19 +131,21 @@ var firebaseConfig = {
             <h1 id="mydata"></h1>
             <p id="myarea"></p>
             
-            <a href="https://www.facebook.com/sharer/sharer.php?u=url" class="shareToFacebook mb-3 icon icon-s bg-facebook rounded-xs text-uppercase font-900"><i class="fab fa-facebook-f font-14"></i></a>
-                    <a href="https://twitter.com/share?text=url" class="shareToTwitter mb-3 icon icon-s bg-twitter rounded-xs text-uppercase font-900"><i class="fab fa-twitter font-14"></i></a>
-                    <a href="https://pinterest.com/pin/create/button/?url=url" class="shareToPinterest mb-3 icon icon-s bg-pinterest rounded-xs text-uppercase font-900"><i class="fab fa-pinterest font-14"></i></a>
-                    <a href="#" class="shareToLinkedin mb-3 icon icon-s bg-linkedin rounded-xs text-uppercase font-900"><i class="fab fa-linkedin-in font-14"></i></a>
-                    <a onclick="window.open('whatsapp://send?text=This is WhatsApp sharing example using button')" class="shareToWhatsApp mb-3 icon icon-s bg-whatsapp rounded-xs text-uppercase font-900"><i class="fab fa-whatsapp font-14"></i></a>
-                    <a href="mailto:?body=url" class="shareToMail mb-3 icon icon-s bg-blue-dark rounded-xs text-uppercase font-900"><i class="fa fa-envelope font-14"></i></a>
+            <a id="fbshareid" class="shareToFacebook mb-3 icon icon-s bg-facebook rounded-xs text-uppercase font-900"><i class="fab fa-facebook-f font-14"></i></a>
+                    <a id="twittershareid" class="shareToTwitter mb-3 icon icon-s bg-twitter rounded-xs text-uppercase font-900"><i class="fab fa-twitter font-14"></i></a>
+                    <a id="pinterestshareid"  class="shareToPinterest mb-3 icon icon-s bg-pinterest rounded-xs text-uppercase font-900"><i class="fab fa-pinterest font-14"></i></a>
+                    <a id="likedinshareid" href="#" class="shareToLinkedin mb-3 icon icon-s bg-linkedin rounded-xs text-uppercase font-900"><i class="fab fa-linkedin-in font-14"></i></a>
+                    <a onclick="window.open('whatsapp://send?text=https://covid-resources-team.netlify.app/info.html?infoid='+infoid)" class="shareToWhatsApp mb-3 icon icon-s bg-whatsapp rounded-xs text-uppercase font-900"><i class="fab fa-whatsapp font-14"></i></a>
+                    <a id="mailshareid" class="shareToMail mb-3 icon icon-s bg-blue-dark rounded-xs text-uppercase font-900"><i class="fa fa-envelope font-14"></i></a>
                     <div class="divider mt-3"></div> </div>
 
                     <p id="myfulldata" style="font-size: 15px; line-height: 1.5; padding: 0 5% 0 5%;"></p>
 
                     <div style="width: -webkit-full-available; text-align: center;">
-                        <img width="130" class="qr-image generate-qr-auto polaroid-effect shadow-l rounded-0" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&amp;data=https://www.enableds.com/products/appeca/v50/component-qr-generator.html"><p style="margin-top: 10px;">Scan this code to view this page.</p>
+                        <img width="130" class="qr-image generate-qr-auto polaroid-effect shadow-l rounded-0"><p style="margin-top: 10px;">Scan this code to view this page.</p>
                     </div>
+
+                
                         
                     <div class="divider"></div>
                     <a onclick="myback();" href="#" class="close-menu btn btn-m rounded-sm text-uppercase font-700 shadow-xxl btn-full bg-highlight mb-4">CLOSE</a>
